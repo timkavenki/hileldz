@@ -1,15 +1,15 @@
-v = int(input("Введіть швидкість Васі: "))
-t = int(input("Введіть час у годинах: "))
+def shift_list(lst, n):
+    if n < 0:
+        n = -n
+        n %= len(lst)
+        shifted_list = lst[n:] + lst[:n]
+    else:
+        n %= len(lst)
+        shifted_list = lst[-n:] + lst[:-n]
+    return shifted_list
 
-distance = v * t
-
-if v > 0:
-    position = distance % 100
-else:
-    position = 100 - (abs(distance) % 100)
-
-if position != 0:
-    print("Вася зупиниться на відмітці", position)
-else:
-    print("Вася зупиниться на початковій відмітці")
-
+# Приклад використання
+input_list = [1, 2, 3, 4, 5]
+shift_amount = int(input("Введіть кількість позицій для зсуву: "))
+shifted_result = shift_list(input_list, shift_amount)
+print("Зсунутий список:", shifted_result)
